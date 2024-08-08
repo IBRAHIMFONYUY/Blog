@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Profile</title>
+
+</head>
+<body>
+<div class="container">
+<div class="profile">
+<img src="p2.png" alt="Profile Picture">
+<h1>{{user.username}}</h1>
+<p>Email:{{user.email}}</p>
+<p><a href="{% url 'logout' %}">logout</a></p>
+<p><a href="{{request.META.HTTP_REFERER}}">back</a></p>
+<hr>
+<p>Blog posted: {{db.count}}</p>
+<p>messages:80</p>
+</div>
+</div>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    }
+    .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    }
+    .profile {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    }
+    img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    }
+    h1 {
+    margin: 0;
+    }
+    p {
+    margin-top: 5px;
+    }
+    @media only screen and (min-width: 768px) {
+    .container {
+    background-image: url('background-image.jpg');
+    background-size: cover;
+    }
+    .profile {
+    width: 400px;
+    }
+    }
+    a{
+        text-decoration: none;
+        color: rgb(8, 162, 223);
+    }
+</style>
+</body>
+</html>

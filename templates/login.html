@@ -1,0 +1,157 @@
+
+{% if page == 'login' %}
+    
+
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>>BlogSpace | login</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    {% include 'nav.html' %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    
+    header {
+        background-color: #333;
+        color: white;
+        padding: 10px;
+    }
+    
+    nav ul {
+        display: flex;
+        justify-content: flex-end;
+        list-style: none;
+    }
+    
+    nav ul li {
+        margin: 0 10px;
+    }
+    
+    nav ul li a {
+        text-decoration: none;
+        color: white;
+    }
+    
+    main {
+        
+        text-align: center;
+        justify-content: center;
+        
+        
+        
+    
+    }
+    
+    article {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 5px;
+    }
+    
+    @media only screen and (max-width: 600px) {
+        main {
+            padding: 5px;
+        }
+    
+        article {
+            padding: 10px;
+        }
+        
+    }
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    }
+    .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    }
+    .form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    form {
+    margin-bottom: 20px;
+    }
+    form h2 {
+    text-align: center;
+    }
+    input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    }
+    button {
+    width: 50%;
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+
+    }
+    button:hover {
+    background-color: #0056b3;
+    }
+    @media only screen and (min-width: 768px) {
+   
+    .form-container {
+    width: 400px;
+    justify-content: center;
+    place-content: center;
+    }
+    }
+ 
+    </style>
+<main>
+    <h2>Login</h2>
+    <p>Login to create your own posts </p>
+    
+    <div class="container">
+        <div class="form-container">
+            <form id="login" method="post" action="">
+                {% csrf_token %}
+                <h2>Login</h2>
+                {%for message in messages%}
+                <p style="color: red;">{{message}}</p>
+                {%endfor%}
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            Not having an account?<a style="color: rgb(20, 158, 212); text-decoration:none" href="{% url 'create' %}"> Signup</a>
+        </div>
+    </div>
+</main>
+<footer>
+    <p style="text-align: center; bottom:1px">&copy; 2024 BlogSpace-Ibrahimfonyuy. Copyright.</p>
+</footer>
+</body>
+</html>
+{% endif %}
+
+
+
+
+
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlogSpace | Blogs</title>
+
+</head>
+<body>
+    {% include 'nav.html' %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+    
+    header {
+        background-color: #333;
+        color: white;
+        padding: 10px;
+    }
+    
+    nav ul {
+        display: flex;
+        justify-content: flex-end;
+        list-style: none;
+    }
+    
+    nav ul li {
+        margin: 0 10px;
+    }
+    
+    nav ul li a {
+        text-decoration: none;
+        color: white;
+    }
+    
+    main {
+        
+        text-align: center;
+    }
+    
+    article {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 5px;
+    }
+    
+    @media only screen and (max-width: 600px) {
+        main {
+            padding: 5px;
+        }
+    
+        article {
+            padding: 10px;
+        }
+    }
+    .blog{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        
+    }
+    .blog-items{
+        height: 100px;
+        width: 300px;
+        border: solid black 2px;
+        justify-content: center;
+        border-radius: 20px;
+        background-color: whitesmoke;
+        padding: 20px;
+        font-size: 15px;
+        margin: 10px;
+    }
+    .text{
+        border-left: #333 2px;
+
+    }
+    .blog-items a{
+        text-decoration: none;
+        text-align: right;
+        bottom: 1px;
+        justify-content: center;
+        margin-top: 50px;
+    }
+    </style>
+<main>
+    <h1 style="color: skyblue;">{{blog.title}}</h1>
+    <h2>Explore this Blogs</h2>
+    <hr>
+    
+    {% if blog.image.url %}
+        
+    <img style="height: 70vh; width: 120vh" src="{{blog.image.url}}" alt="">
+    {% endif %}
+
+    <p>{{blog.description}}</p>
+    <hr>    
+    <p>Posted by {{blog.user}} - {{blog.created| timesince}} ago 
+    {% if request.user == blog.user %}
+        -- <a style="color: skyblue; text-decoration: none;" href="{% url 'delete' blog.id %}">Delete post</a>
+        <a style="color: skyblue; text-decoration: none;" href="{% url 'update-post' blog.id %}">Delete post</a>
+    {% endif %}
+        </p>
+</main>
+</body>
+</html>
